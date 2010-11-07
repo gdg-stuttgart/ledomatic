@@ -39,9 +39,9 @@ public class DevicesResource extends ServerResource {
     	restRequest = parseParams();
     	Device device = deviceService.getDevice(restRequest.getDeviceid());
     	if (device.isStatus()) {
-    		return "On";
+    		return "result=On";
     	}
-    	return "Off";
+    	return "result=Off";
     }
 
     private RestRequest parseParams() {
