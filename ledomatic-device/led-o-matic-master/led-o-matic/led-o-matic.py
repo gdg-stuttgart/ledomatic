@@ -21,7 +21,7 @@ from firmata import *
 from ledomatic.server import Server
 
 serv = Server()
-serv.login('L1')
+serv.login('rr/L1')
 
 
 def setMode(a, pin_nr, type):
@@ -40,7 +40,10 @@ setMode(a, 13, firmata.OUTPUT)
 while True:
   # check status
   answer = serv.getStatus()
-  setOut(a, 13, answer.value)
+  if 'result=Off':
+    setOut(a, 13, firmata.LOW)
+  else:
+  	setOut(a, 13, firmata.HIGH)
   # wait
-  a.delay(2)
+  a.delay(1)
 

@@ -31,6 +31,8 @@ def setOut(a, out_nr, value):
 # arduino on mac on the port with default 115200
 a = Arduino('/dev/tty.usbmodem411')
 setMode(a, 13, firmata.OUTPUT)
+
+# infinite loop, Arduino instance shoul runs
 while True:
   setOut(a, 13, firmata.HIGH);
 

@@ -1,0 +1,10 @@
+status: 200
+content-location: http://ledomatic.appspot.com/rr/L1
+accept-ranges: bytes
+vary: Accept-Charset, Accept-Encoding, Accept-Language, Accept
+server: Google Frontend
+cache-control: private, x-gzip-ok=""
+date: Sun, 07 Nov 2010 16:50:06 GMT
+content-type: text/plain; charset=UTF-8
+
+result=Off
