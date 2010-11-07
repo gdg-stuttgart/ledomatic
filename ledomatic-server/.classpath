@@ -8,5 +8,6 @@
 	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.servlet.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/warp-persist-2.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

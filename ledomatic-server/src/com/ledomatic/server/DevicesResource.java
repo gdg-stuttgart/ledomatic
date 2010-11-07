@@ -5,32 +5,51 @@ import org.restlet.resource.Get;
 import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
+import com.google.inject.Inject;
+
 public class DevicesResource extends ServerResource {
 
 	private RestRequest restRequest;
+	private DeviceService deviceService;
+
+	@Inject
+	public DevicesResource(DeviceService deviceService) {
+		this.deviceService = deviceService;
+	}
 
     @Put
-    public String login() {
+    public void login() {
     	restRequest = parseParams();
-    	return restRequest.getDeviceid() + " " + restRequest.getInputtype() + " " + restRequest.getId();
+    	Device device = new Device();
+    	device.setId(restRequest.getDeviceid());
+    	device.setStatus(true);
+    	deviceService.saveDevice(device);
     }
 
     @Delete
-    public String logout() {
+    public void logout() {
     	restRequest = parseParams();
-    	return "";
+    	Device device = deviceService.getDevice(restRequest.getDeviceid());
+    	device.setStatus(false);
+    	deviceService.saveDevice(device);
     }
 
     @Get
     public String status() {
     	restRequest = parseParams();
-    	return "";
+    	Device device = deviceService.getDevice(restRequest.getDeviceid());
+    	if (device.isStatus()) {
+    		return "On";
+    	}
+    	return "Off";
     }
 
     private RestRequest parseParams() {
     	RestRequest restRequest = new RestRequest();
     	restRequest.setDeviceid((String) getRequest().getAttributes().get("deviceid"));
-    	restRequest.setInputtype((String) getRequest().getAttributes().get("inputtype"));
+    	if (getRequest().getAttributes().containsKey("inputtype")) {
+    		restRequest.setInputtype((String) getRequest().getAttributes().get("inputtype"));
+    	}
     	if (getRequest().getAttributes().containsKey("id")) {
     		restRequest.setId((String) getRequest().getAttributes().get("id"));
     	}
