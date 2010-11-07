@@ -6,31 +6,25 @@ import org.restlet.routing.Router;
 
 import com.google.inject.Injector;
 
-public abstract class GuiceRouter extends Router
-{
+public abstract class GuiceRouter extends Router {
+
     private final Injector injector;
 
-
-    public GuiceRouter(Injector injector, Context context)
-    {
+    public GuiceRouter(Injector injector, Context context) {
         super(context);
         this.injector = injector;
         attachRoutes();
     }
 
-
     @Override
-    public Finder createFinder(Class targetClass)
-    {
+    public Finder createFinder(Class targetClass) {
         return new GuiceFinder(injector, getContext(), targetClass);
     }
 
-
     protected abstract void attachRoutes();
 
-
-    protected Injector getInjector()
-    {
+    protected Injector getInjector() {
         return injector;
     }
+
 }

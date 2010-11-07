@@ -16,25 +16,21 @@ import com.google.inject.Injector;
 import com.google.inject.Singleton;
 
 @Singleton
-public class RestletServlet extends HttpServlet
-{
+public class RestletServlet extends HttpServlet {
+
     @Inject
     private Injector injector;
     private Context context;
     private ServletAdapter adapter;
 
-
     @Override
-    public void init() throws ServletException
-    {
+    public void init() throws ServletException {
         context = new Context();
         Application application = new Application();
         application.setContext(context);
-        application.setInboundRoot(new GuiceRouter(injector, context)
-        {
+        application.setInboundRoot(new GuiceRouter(injector, context) {
             @Override
-            protected void attachRoutes()
-            {
+            protected void attachRoutes() {
             	attach("/rr/{deviceid}/{inputtype}", DevicesResource.class);
                 attach("/rr/{deviceid}/{inputtype}/{id}", DevicesResource.class);
             }
@@ -46,8 +42,8 @@ public class RestletServlet extends HttpServlet
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-            IOException
-    {
+            IOException {
         adapter.service(request, response);
     }
+
 }

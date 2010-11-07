@@ -8,21 +8,18 @@ import org.restlet.resource.ServerResource;
 
 import com.google.inject.Injector;
 
-public class GuiceFinder extends Finder
-{
+public class GuiceFinder extends Finder {
+
     private final Injector injector;
 
-
-    public GuiceFinder(Injector injector, Context context, Class targetClass)
-    {
+    public GuiceFinder(Injector injector, Context context, Class targetClass) {
         super(context, targetClass);
         this.injector = injector;
     }
 
-
     @Override
-    public ServerResource create(Class targetClass, Request request, Response response)
-    {
+    public ServerResource create(Class targetClass, Request request, Response response) {
         return injector.getInstance(targetClass);
     }
+
 }
