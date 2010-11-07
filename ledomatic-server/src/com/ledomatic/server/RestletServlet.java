@@ -39,7 +39,7 @@ public class RestletServlet extends HttpServlet
             }
         });
         adapter = new ServletAdapter(getServletContext());
-        //adapter.setTarget(application);
+        adapter.setNext(application);
     }
 
 

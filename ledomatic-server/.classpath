@@ -50,5 +50,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.freemarker_2.3/org.freemarker.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.jibx_1.2/org.jibx.runtime.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.json_2.0/org.json.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
