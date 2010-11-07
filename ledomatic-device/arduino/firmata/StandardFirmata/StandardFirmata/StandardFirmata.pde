@@ -353,7 +353,7 @@ void setup()
   // by defult, do not report any analog inputs
   analogInputsToReport = 0;
 
-  Firmata.begin(57600);
+  Firmata.begin(115200);
 
   /* send digital inputs to set the initial state on the host computer,
    * since once in the loop(), this firmware will only send on change */
