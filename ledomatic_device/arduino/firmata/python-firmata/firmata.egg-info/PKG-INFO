@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: firmata
+Version: 0.3
+Summary: Python bindings for the Firmata protocol
+Home-page: http://github.com/lupeke/python-firmata/
+Author: laboratorio
+Author-email: info@laboratorio.us
+License: GPL v3
+Description: The aim of this project is to allow developers to communicate with Arduino microcontrollers using Python.
+Keywords: arduino firmata microcontroller ubicomp
+Platform: UNKNOWN

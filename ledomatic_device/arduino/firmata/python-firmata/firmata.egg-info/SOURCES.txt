@@ -1,0 +1,9 @@
+README
+setup.py
+firmata/__init__.py
+firmata/firmata.py
+firmata.egg-info/PKG-INFO
+firmata.egg-info/SOURCES.txt
+firmata.egg-info/dependency_links.txt
+firmata.egg-info/requires.txt
+firmata.egg-info/top_level.txt
