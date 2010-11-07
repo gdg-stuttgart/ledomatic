@@ -38,7 +38,7 @@ public class DevicesResource extends ServerResource {
     public String status() {
     	restRequest = parseParams();
     	Device device = deviceService.getDevice(restRequest.getDeviceid());
-    	if (device.isStatus()) {
+    	if (device != null && device.isStatus()) {
     		return "result=On";
     	}
     	return "result=Off";

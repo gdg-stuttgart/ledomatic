@@ -1,6 +1,7 @@
 package com.ledomatic.server;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceException;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -18,7 +19,11 @@ public class DeviceServiceImpl implements DeviceService {
 	@Transactional
 	@Override
 	public Device getDevice(String id) {
-		return entityManager.get().find(Device.class, id);
+		try {
+			return entityManager.get().find(Device.class, id);
+		} catch (PersistenceException e) {
+			return null;
+		}
 	}
 
 	@Transactional

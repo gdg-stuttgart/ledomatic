@@ -31,6 +31,7 @@ public class RestletServlet extends HttpServlet {
         application.setInboundRoot(new GuiceRouter(injector, context) {
             @Override
             protected void attachRoutes() {
+            	attach("/rr/{deviceid}", DevicesResource.class);
             	attach("/rr/{deviceid}/{inputtype}", DevicesResource.class);
                 attach("/rr/{deviceid}/{inputtype}/{id}", DevicesResource.class);
             }
