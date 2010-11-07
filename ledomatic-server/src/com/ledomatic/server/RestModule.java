@@ -10,8 +10,7 @@ public class RestModule extends ServletModule {
 		serve("/*").with(RestletServlet.class);
 
 		// cannot use @ImplementedBy
-		//bind(EggService.class).to(EggServiceImpl.class);
-		//bind(LoginService.class).to(LoginServiceImpl.class);
+		bind(DeviceService.class).to(DeviceServiceImpl.class);
 
 		bindConstant().annotatedWith(JpaUnit.class).to("default");
 	}
