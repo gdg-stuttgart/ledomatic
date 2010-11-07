@@ -1,55 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (1)"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-2.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-servlet-2.0.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.atom.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.crypto.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.freemarker.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.gwt.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.jaas.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.jackson.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.jaxb.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.jaxrs.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.jibx.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.json.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.lucene.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.net.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.odata.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.rdf.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.rome.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.servlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.spring.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.velocity.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.wadl.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.ext.xml.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.restlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/com.sun.xml.bind_2.1/com.sun.jaxb.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.activation_1.1/javax.activation.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.mail_1.4/javax.mail.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.servlet_2.5/javax.servlet.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.ws.rs_1.0/javax.ws.rs.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.xml.bind_2.1/javax.xml.bind.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/javax.xml.stream_1.0/javax.xml.stream.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/net.sf.cglib_2.2/net.sf.cglib.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.commons.collections_3.2/org.apache.commons.collections.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.commons.fileupload_1.2/org.apache.commons.fileupload.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.commons.io_1.4/org.apache.commons.io.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.commons.lang_2.5/org.apache.commons.lang.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.commons.logging_1.1/org.apache.commons.logging.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.lucene_2.9/org.apache.lucene.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.solr_1.4/org.apache.solr.common.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.solr_1.4/org.apache.solr.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.tika_0.6/org.apache.tika.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.tika_0.6/org.apache.tika.parsers.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.apache.velocity_1.6/org.apache.velocity.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.codehaus.jackson_1.4/org.codehaus.jackson.core.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.codehaus.jackson_1.4/org.codehaus.jackson.mapper.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.freemarker_2.3/org.freemarker.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.jibx_1.2/org.jibx.runtime.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/restlet-gae-2.0.2/lib/org.json_2.0/org.json.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
+	<classpathentry exported="true" kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (1)"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/guice-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/guice-servlet-2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="war/WEB-INF/lib/aopalliance.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/org.restlet.ext.servlet.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

@@ -11,11 +11,16 @@ import com.google.inject.Inject;
 
 public class DevicesResource extends ServerResource {
 
-    @Get("xml")
-    public Representation represent() {
-        Context context = new Context();
-        //context.set("projects", service.list());
-        //String xml = converter.convert("templates/projects.vm", context);
-        return new StringRepresentation("", MediaType.TEXT_XML);
+//    @Get("xml")
+//    public Representation represent() {
+//        Context context = new Context();
+//        context.set("devices", service.list());
+//        //String xml = converter.convert("templates/projects.vm", context);
+//        return new StringRepresentation("", MediaType.TEXT_XML);
+//    }
+
+    @Get
+    public String represent(){
+    	return "hello world";
     }
 }

@@ -10,6 +10,6 @@ public class ServletConfig extends GuiceServletContextListener {
     protected Injector getInjector()
     {
         // Further modules are omitted...
-        return Guice.createInjector(new ServletModule());
+        return Guice.createInjector(new RestModule());
     }
 }
