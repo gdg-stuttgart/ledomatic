@@ -35,7 +35,8 @@ public class RestletServlet extends HttpServlet
             @Override
             protected void attachRoutes()
             {
-                attach("/devices", DevicesResource.class);
+            	attach("/rr/{deviceid}/{inputtype}", DevicesResource.class);
+                attach("/rr/{deviceid}/{inputtype}/{id}", DevicesResource.class);
             }
         });
         adapter = new ServletAdapter(getServletContext());
