@@ -105,7 +105,7 @@ def getValueFromPin(device, pin_name, pin_id_str):
     if dev_value_str:    
         value_lst = dev_value_str.split(',')
     else:
-      value_lst = []
+        value_lst = []
        
     pin_id = int(pin_id_str)
 
