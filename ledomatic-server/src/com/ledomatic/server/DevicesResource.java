@@ -21,18 +21,22 @@ public class DevicesResource extends ServerResource {
     @Put
     @Post
     public String login() {
+    	String state = "";
     	restRequest = parseParams();
     	Device device = new Device();
     	device.setId(restRequest.getDeviceid());
     	device.setStatus(true);
-    	if (restRequest.getInputtype() != null) {
-    		device.setInputType(InputType.valueOf(restRequest.getInputtype()));
-    	}
-    	if (restRequest.getId() != null) {
-    		device.setPinnId(restRequest.getId());
+    	if (restRequest.getInputtype() != null && restRequest.getId() != null) {
+    		Pin pin = findOrCreatePin(device, InputType.valueOf(restRequest.getInputtype()), restRequest.getId());
+    		pin.toogleStatus();
+    		if (pin.isStatus()) {
+    			state = "state=On";
+    		} else {
+    			state = "state=Off";
+			}
     	}
     	deviceService.saveDevice(device);
-    	return "";
+    	return state;
     }
 
     @Delete
@@ -51,6 +55,20 @@ public class DevicesResource extends ServerResource {
     		return "result=On";
     	}
     	return "result=Off";
+    }
+
+    private Pin findOrCreatePin(Device device, InputType inputType, String pinId) {
+    	for (Pin pin : device.getPins()) {
+    		if (pin.getInputType().equals(inputType) && pin.getPinId().equals(pinId)) {
+    			return pin;
+    		}
+    	}
+    	Pin pin = new Pin();
+    	pin.setInputType(inputType);
+    	pin.setPinId(pinId);
+    	device.getPins().add(pin);
+    	//XXX This is kind of bad..
+    	return findOrCreatePin(device, inputType, pinId);
     }
 
     private RestRequest parseParams() {

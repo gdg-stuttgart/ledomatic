@@ -1,8 +1,9 @@
 package com.ledomatic.server;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 @Entity
@@ -11,9 +12,7 @@ public class Device {
 	@Id
 	private String id;
 	private boolean status;
-	@Enumerated(EnumType.ORDINAL)
-	private InputType inputType;
-	private String pinnId;
+	private List<Pin> pins = new ArrayList<Pin>();
 
 	public String getId() {
 		return id;
@@ -31,20 +30,12 @@ public class Device {
 		this.status = status;
 	}
 
-	public InputType getInputType() {
-		return inputType;
+	public List<Pin> getPins() {
+		return pins;
 	}
 
-	public void setInputType(InputType inputType) {
-		this.inputType = inputType;
-	}
-
-	public String getPinnId() {
-		return pinnId;
-	}
-
-	public void setPinnId(String pinnId) {
-		this.pinnId = pinnId;
+	public void setPins(List<Pin> pins) {
+		this.pins = pins;
 	}
 
 }

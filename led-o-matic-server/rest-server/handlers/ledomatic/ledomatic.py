@@ -47,10 +47,13 @@ class RootHandler(restful.Controller):
         # get list of devices connected
         query = db.Query(ledomatic.Device)
         results = query.fetch(limit=5)
-        restful.send_successful_response(self, results[0].name)
+        dev_lst=[]
+        for device in results:
+          dev_lst.append(device.name)
+        restful.send_successful_response(self, "result=" + ",".join(dev_lst))
 
     def post(self, device_name):
-        logging.debug("RootHandler#(%s)", device_name)
+        logging.info("RootHandler#(%s)", device_name)
         device = ledomatic.Device.get_by_key_name(device)
         if not device:
           device = ledomatic.Device()
@@ -88,15 +91,97 @@ class DeviceHandler(restful.Controller):
         logging.debug("RootHandler#post")
         # login device into list of device, if OK get the name back
         restful.send_successful_response(self, 'L1')
+        
+def getValueFromPin(device, pin_name, pin_id_str):
+    if pin_name == 'OUT':
+        dev_value_str = device.pins_OUT
+    elif pin_name == 'IN':
+        dev_value_str = device.pins_IN
+    elif pin_name == 'RGB':
+        dev_value_str = device.pins_RGB
+    else:
+        dev_value_str = ''
+        
+    if dev_value_str:    
+        value_lst = dev_value_str.split(',')
+    else:
+      value_lst = []
+       
+    pin_id = int(pin_id_str)
 
+    if len(value_lst) <= pin_id:            
+        for i in range(0,pin_id + 1):
+            value_lst.append('0')   
+
+    return value_lst[pin_id]
+    
+def setValueToPin(device, pins_type_name, pin_id_str, value):
+    if pins_type_name == 'OUT':
+        pins_value_str = device.pins_OUT
+    elif pins_type_name == 'IN':
+        pins_value_str = device.pins_IN
+    elif pins_type_name == 'RGB':
+        pins_value_str = device.pins_RGB
+    elif pins_type_name == 'AIN':
+        pins_value_str = device.pins_AIN    
+    elif pins_type_name == 'PWM':
+        pins_value_str = device.pins_PWM
+    else:
+        pins_value_str = ''
+        
+    if  pins_value_str:   
+        values_lst = pins_value_str.split(',')
+    else:
+        values_lst = []
+        
+    pin_id = int(pin_id_str)
+
+    if len(values_lst) <= pin_id:            
+        for i in range(0,pin_id + 1):
+            values_lst.append('0')  
+
+    values_lst[pin_id] = value
+    pins_value_str = ','.join(values_lst)
+    
+    if pins_type_name == 'OUT': 
+        device.pins_OUT = pins_value_str
+    elif pins_type_name == 'IN': 
+        device.pins_IN = pins_value_str
+    elif pins_type_name == 'RGB':
+        device.pins_RGB = pins_value_str
+    elif pins_type_name == 'AIN':
+        device.pins_AIN = pins_value_str
+    elif pins_type_name == 'PWM':
+        device.pins_PWM = pins_value_str    
+    else:
+        logging.info("Undowns pins name")
+        
+    device.put()    
+ 
 class PinsHandler(restful.Controller):
-    def get(self, device, pin, pin_id):
-        logging.info(device + pin + pin_id)
+    def get(self, device_name, pin_name, pin_id_str):
+        logging.info("PinsHandler" + device_name + pin_name + pin_id_str)
         # we pretends L1 is conencted
-        restful.send_successful_response(self, 'L1')
+        query = ledomatic.Device.all()
+        query.filter('name =', device_name)
+        device = query.fetch(limit=5)
+        if device:
+            if  getValueFromPin(device[0], pin_name, pin_id_str) == "1":
+                restful.send_successful_response(self, 'result=On')
+            else:
+                restful.send_successful_response(self, 'result=Off')
 
-    def post(self):
-        logging.debug("RootHandler#post")
-        # login device into list of device, if OK get the name back
-        restful.send_successful_response(self, 'L1')
+    def post(self, device_name, pins_name, pin_id_str):
+        logging.info("PinsHandler#post" + device_name + pins_name + pin_id_str)
+        query = ledomatic.Device.all()
+        query.filter('name =', device_name)
+        device = query.fetch(limit=5)
+        logging.info("PinsHandler#post#body" + self.request.body)
+        if device:
+            if self.request.body == 'state=On':
+                setValueToPin(device[0], pins_name, pin_id_str, '1')
+            else:
+                setValueToPin(device[0], pins_name, pin_id_str, '0')
+        
+        restful.send_successful_response(self, '')
 
