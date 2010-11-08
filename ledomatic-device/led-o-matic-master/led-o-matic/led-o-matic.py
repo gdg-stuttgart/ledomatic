@@ -40,10 +40,11 @@ setMode(a, 13, firmata.OUTPUT)
 while True:
   # check status
   answer = serv.getStatus()
-  if 'result=Off':
+  print answer
+  if answer == 'result=Off':
     setOut(a, 13, firmata.LOW)
   else:
-  	setOut(a, 13, firmata.HIGH)
+  	setOut(a,13, firmata.HIGH)
   # wait
   a.delay(1)
 
