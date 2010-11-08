@@ -48,7 +48,6 @@ public class Main extends Activity {
 			public void run()
 			{
 				final List<String> devices = GAEAdapter.getInstance().getDevices();
-//				final List<String> devicesFake = GAEAdapter.getInstance().getFakeDevice();
 				Main.this.checkDevices(devices);
 				
 			}
@@ -67,16 +66,18 @@ public class Main extends Activity {
 		{			
 			public void run()
 			{						
-				statusText.setText(statusText.getText() + " " + devices.size() + " devices found");
+				statusText.setText( "System state: " + " " + devices.size() + " devices found");
 			}
 		});
+		
+		final LinearLayout container = new LinearLayout(Main.this);
+		container.removeAllViews();
 		
 	
 		for(final String device: devices)
 		{
 			
 			final boolean state = GAEAdapter.getInstance().getToogleState(device) ;	
-			final LinearLayout container = new LinearLayout(Main.this);
 			container.setOrientation(LinearLayout.HORIZONTAL);
 			final ToggleButton button = new ToggleButton(Main.this);
 			final TextView status = new TextView(Main.this);

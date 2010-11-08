@@ -7,9 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -203,7 +201,7 @@ public class GAEAdapter
 		} catch (IOException e)
 		{
 			// couldn't connect to host
-			Log.d("ledomatic", e.toString());
+			Log.e("ledomatic", e.toString(), e);
 		} catch (PostException e)
 		{
 			Log.d("ledomatic", e.toString());
