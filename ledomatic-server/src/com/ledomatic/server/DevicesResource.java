@@ -20,12 +20,19 @@ public class DevicesResource extends ServerResource {
 
     @Put
     @Post
-    public void login() {
+    public String login() {
     	restRequest = parseParams();
     	Device device = new Device();
     	device.setId(restRequest.getDeviceid());
     	device.setStatus(true);
+    	if (restRequest.getInputtype() != null) {
+    		device.setInputType(InputType.valueOf(restRequest.getInputtype()));
+    	}
+    	if (restRequest.getId() != null) {
+    		device.setPinnId(restRequest.getId());
+    	}
     	deviceService.saveDevice(device);
+    	return "";
     }
 
     @Delete

@@ -1,3 +1,4 @@
 bin
 gen
 ledomatic-server/war/WEB-INF/classes
+ledomatic-server/war/WEB-INF/appengine-generated
