@@ -2,6 +2,7 @@ package com.ledomatic.server;
 
 import org.restlet.resource.Delete;
 import org.restlet.resource.Get;
+import org.restlet.resource.Post;
 import org.restlet.resource.Put;
 import org.restlet.resource.ServerResource;
 
@@ -18,6 +19,7 @@ public class DevicesResource extends ServerResource {
 	}
 
     @Put
+    @Post
     public void login() {
     	restRequest = parseParams();
     	Device device = new Device();
