@@ -10,10 +10,12 @@ class Server:
     	self.conn = Connection(self.root_url)
     	self.name = ""
 
-    def getStatus(self):
-        print "get" + '/rr/' + self.name + '/OUT/13'
-        response = self.conn.request_get(self.name + '/OUT/13' )
+    def getPinStatus(self, pins_name, pin_id):
+        request = self.name + '/' + pins_name + '/' + pin_id
+        response = self.conn.request_get(self.name + request)
+        print request
         return response['body']
+  
 
     def login(self, name):
 		self.name = name

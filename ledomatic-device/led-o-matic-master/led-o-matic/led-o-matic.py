@@ -34,12 +34,15 @@ def setOut(a, out_nr, value):
 
 # arduino on mac on the port with default 115200
 a = Arduino('/dev/tty.usbmodem411')
-setMode(a, 13, firmata.OUTPUT)
+setMode(a, 3, firmata.OUTPUT)
+setMode(a, 5, firmata.OUTPUT)
+setMode(a, 6, firmata.OUTPUT)
+
 
 # infinite loop, Arduino instance shoul runs
 while True:
   # check status
-  answer = serv.getStatus()
+  answer = serv.getPinStatus('OUT','13')
   print answer
   if answer == 'result=Off':
     setOut(a, 13, firmata.LOW)
