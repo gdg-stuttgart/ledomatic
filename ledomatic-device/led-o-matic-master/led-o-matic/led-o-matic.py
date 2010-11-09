@@ -26,17 +26,17 @@ print "connected to " + str(serv.login('rr/L1'))
 
 def setMode(a, pin_nr, type):
   a.pin_mode(pin_nr, type)
-  a.delay(1)
+  #a.delay(1)
 
 def setOut(a, out_nr, value):
     a.digital_write(out_nr, value)
-    a.delay(1)
+    #a.delay(1)
     
 def setRGBOut(a, red, green, blue):
     a.analog_write(3, red)
     a.analog_write(6, green)
     a.analog_write(7, blue)
-    a.delay(1)    
+    #a.delay(1)    
     
 def get_rgb_from_hex(hex_color):
     red = 255
