@@ -26,11 +26,23 @@ serv.login('rr/L1')
 
 def setMode(a, pin_nr, type):
   a.pin_mode(pin_nr, type)
-  a.delay(2)
+  a.delay(1)
 
 def setOut(a, out_nr, value):
     a.digital_write(out_nr, value)
-    a.delay(2)
+    a.delay(1)
+    
+def setRGBOut(a, red, green, blue):
+    a.analog_write(3, red)
+    a.analog_write(6, green)
+    a.analog_write(7, blue)
+    a.delay(1)    
+    
+def get_rgb_from_hex(hex_color):
+    red = 255
+    gred = 0
+    blue = 0
+    return red, gred, blue
 
 # arduino on mac on the port with default 115200
 a = Arduino('/dev/tty.usbmodem411')
@@ -39,15 +51,22 @@ setMode(a, 5, firmata.OUTPUT)
 setMode(a, 6, firmata.OUTPUT)
 
 
-# infinite loop, Arduino instance shoul runs
+# infinite loop, Arduino instance should runs
 while True:
-  # check status
+  # check LED status
   answer = serv.getPinStatus('OUT','13')
   print answer
   if answer == 'result=Off':
     setOut(a, 13, firmata.LOW)
   else:
   	setOut(a,13, firmata.HIGH)
+
+  answer = serv.getPinStatus('RGB','0')
+  print answer
+  if len(answer) == len('color=xxxxxx'):
+    # parse RGB from string
+    key_value_lst = '='.split(answer)
+    setRGBOut(a, get_rgb_from_hex(key_value_lst[0]))
   # wait
   a.delay(1)
-
+ 
