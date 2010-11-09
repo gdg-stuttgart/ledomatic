@@ -40,10 +40,20 @@ from google.appengine.api import urlfetch
 
 from handlers import restful
 from models import ledomatic
-    
+
+def get_device_by_name(device_name):
+    query = ledomatic.Device.all()
+    query.filter('name =', device_name)
+    devices = query.fetch(limit=5)
+    if devices:
+        return devices[0]
+    else:
+        return None
+
+
 class RootHandler(restful.Controller):
+
     def get(self):
-        logging.info("RootHandler#MISKO")
         # get list of devices connected
         query = db.Query(ledomatic.Device)
         results = query.fetch(limit=5)
@@ -53,18 +63,19 @@ class RootHandler(restful.Controller):
         restful.send_successful_response(self, "result=" + ",".join(dev_lst))
 
     def post(self, device_name):
-        logging.info("RootHandler#(%s)", device_name)
-        device = ledomatic.Device.get_by_key_name(device)
-        if not device:
-          device = ledomatic.Device()
-          device.name = device_name
-          device.put()
+        if not get_device_by_name(device_name):
+            # login the device into DB
+            device = ledomatic.Device()
+            device.name = device_name
+            device.put()
+
         # login device into list of device, if OK get the name back
-        restful.send_successful_response(self, 'L1')
+        restful.send_successful_response(self, device_name)
         
 class DevicesHandler(restful.Controller):
+
     def get(self, *path):
-        logging.info(path)
+        logging.debug(path)
         # we pretends L1 is conencted
         restful.send_successful_response(self, 'L1')
 
@@ -80,10 +91,19 @@ class DevicesHandler(restful.Controller):
         # login device into list of device, if OK get the name back
         restful.send_successful_response(self, device_name)
 
+    def delete(self, device_name):
+        logging.info("deleteHandler#(%s)", device_name)
+        device = get_device_by_name(device_name)
+        logging.info("deleteHandler#(%s)", device_name)
+        if device:
+            logging.info("dele#(%s)", device_name)
+            db.delete(device)
+        restful.send_successful_response(self, device_name)
+
 
 class DeviceHandler(restful.Controller):
     def get(self, device, pin):
-        logging.info(device + pin)
+        logging.debug(device + pin)
         # we pretends L1 is conencted
         restful.send_successful_response(self, 'L1')
 
@@ -154,13 +174,13 @@ def setValueToPin(device, pins_type_name, pin_id_str, value):
     elif pins_type_name == 'PWM':
         device.pins_PWM = pins_value_str    
     else:
-        logging.info("Undowns pins name")
+        logging.debug("Undowns pins name")
         
     device.put()    
  
 class PinsHandler(restful.Controller):
     def get(self, device_name, pin_name, pin_id_str):
-        logging.info("PinsHandler" + device_name + pin_name + pin_id_str)
+        logging.debug("PinsHandler" + device_name + pin_name + pin_id_str)
         # we pretends L1 is conencted
         query = ledomatic.Device.all()
         query.filter('name =', device_name)
@@ -172,11 +192,11 @@ class PinsHandler(restful.Controller):
                 restful.send_successful_response(self, 'result=Off')
 
     def post(self, device_name, pins_name, pin_id_str):
-        logging.info("PinsHandler#post" + device_name + pins_name + pin_id_str)
+        logging.debug("PinsHandler#post" + device_name + pins_name + pin_id_str)
         query = ledomatic.Device.all()
         query.filter('name =', device_name)
         device = query.fetch(limit=5)
-        logging.info("PinsHandler#post#body" + self.request.body)
+        logging.debug("PinsHandler#post#body" + self.request.body)
         if device:
             if self.request.body == 'state=On':
                 setValueToPin(device[0], pins_name, pin_id_str, '1')
