@@ -9,13 +9,14 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.ledomatic.android.ColorPickerView.OnColorChangedListener;
 
-public class Main extends Activity {
+public class Main extends Activity implements OnColorChangedListener {
 	private TextView statusText;
 	private LinearLayout toggleContainer;
 
@@ -27,6 +28,24 @@ public class Main extends Activity {
 
 		toggleContainer = (LinearLayout) findViewById(R.id.toggleContainer);
 		statusText = (TextView) findViewById(R.id.textStatus);
+	}
+	
+	public void colorChanged( int color) {
+		
+		final int c = color;
+		new Thread(new Runnable() {
+			public void run() {
+			 	GAEAdapter.getInstance().setRGBValue("L1", Integer.toHexString( Color.red( c))  + Integer.toHexString( Color.green( c))  + Integer.toHexString( Color.blue(c)));
+				runOnUiThread(new Runnable() {
+					public void run() {
+						//status.setText("");
+
+					}
+				});
+			}
+		}).start();
+		
+		Log.i( "Main", "Red: " + Integer.toHexString( Color.red( color))  + " - Green: " + Integer.toHexString( Color.green( color)) + " - Blue: " + Integer.toHexString( Color.blue( color)));
 	}
 
 	@Override
@@ -73,7 +92,7 @@ public class Main extends Activity {
 			final TextView status = new TextView(Main.this);
 			buttonContainer.addView(status);
 
-			ColorPickerView colorPickerView = new ColorPickerView( toggleContainer.getContext(), new OnColorChangedListenerImpl(), 551155);
+			ColorPickerView colorPickerView = new ColorPickerView( toggleContainer.getContext(), this, 551155);
 			colorContainer.addView(colorPickerView);
 
 			runOnUiThread(new Runnable() {
@@ -92,6 +111,9 @@ public class Main extends Activity {
 					toggleState(device, !button.isChecked(), button, status);
 				}
 			});
+			
+			
+			
 		}
 	}
 
@@ -111,12 +133,5 @@ public class Main extends Activity {
 		// TODO progress indicator
 		status.setText(".. working .. ");
 
-	}
-
-	private class OnColorChangedListenerImpl implements OnColorChangedListener {
-
-		public void colorChanged( int color) {
-			Log.i( "Main", "Red: " + Integer.toHexString( Color.red( color))  + " - Green: " + Integer.toHexString( Color.green( color)) + " - Blue: " + Integer.toHexString( Color.blue( color)));
-		}
-	}
+	}	
 }

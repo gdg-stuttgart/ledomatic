@@ -17,7 +17,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpParams;
 
 import android.util.Log;
 
@@ -92,7 +91,10 @@ public class GAEAdapter
 		return false;
 	}
 
-
+	public void setRGBValue(String device, String color)
+	{
+		postRequest(device, Channel.RGB, "0" , "color" + color);
+	}
 
 	public void setToggleState(String device, boolean state)
 	{
