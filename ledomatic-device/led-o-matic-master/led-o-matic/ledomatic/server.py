@@ -12,14 +12,16 @@ class Server:
 
     def getPinStatus(self, pins_name, pin_id):
         request = self.name + '/' + pins_name + '/' + pin_id
-        response = self.conn.request_get(self.name + request)
+        response = self.conn.request_get(request)
         print request
         return response['body']
   
 
     def login(self, name):
 		self.name = name
-		response = self.conn.request_put('/' + name)
+		response = self.conn.request_post('/' + name)
+		return self.root_url + '/' + self.name + response['body']
+		
 		
 	
 	

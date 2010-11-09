@@ -20,8 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from firmata import * 
 from ledomatic.server import Server
 
-serv = Server()
-serv.login('rr/L1')
+serv = Server("http://localhost:8080")
+print "connected to " + str(serv.login('rr/L1'))
 
 
 def setMode(a, pin_nr, type):
@@ -49,7 +49,6 @@ a = Arduino('/dev/tty.usbmodem411')
 setMode(a, 3, firmata.OUTPUT)
 setMode(a, 5, firmata.OUTPUT)
 setMode(a, 6, firmata.OUTPUT)
-
 
 # infinite loop, Arduino instance should runs
 while True:

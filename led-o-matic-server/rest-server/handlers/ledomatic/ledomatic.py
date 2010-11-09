@@ -161,6 +161,7 @@ def setValueToPin(device, pins_type_name, pin_id_str, value):
             values_lst.append('0')  
 
     values_lst[pin_id] = value
+
     pins_value_str = ','.join(values_lst)
     
     if pins_type_name == 'OUT': 
@@ -179,17 +180,20 @@ def setValueToPin(device, pins_type_name, pin_id_str, value):
     device.put()    
  
 class PinsHandler(restful.Controller):
-    def get(self, device_name, pin_name, pin_id_str):
-        logging.debug("PinsHandler" + device_name + pin_name + pin_id_str)
+    def get(self, device_name, pin_type_name, pin_id_str):
+        logging.debug("PinsHandler" + device_name + pin_type_name + pin_id_str)
         # we pretends L1 is conencted
         query = ledomatic.Device.all()
         query.filter('name =', device_name)
         device = query.fetch(limit=5)
         if device:
-            if  getValueFromPin(device[0], pin_name, pin_id_str) == "1":
-                restful.send_successful_response(self, 'result=On')
+            if pin_type_name == 'RGB':
+                restful.send_successful_response(self, 'result=' + getValueFromPin(device[0], pin_type_name, pin_id_str))
             else:
-                restful.send_successful_response(self, 'result=Off')
+                if  getValueFromPin(device[0], pin_type_name, pin_id_str) == "1":
+                    restful.send_successful_response(self, 'result=On')
+                else:
+                    restful.send_successful_response(self, 'result=Off')
 
     def post(self, device_name, pins_name, pin_id_str):
         logging.debug("PinsHandler#post" + device_name + pins_name + pin_id_str)
@@ -198,10 +202,16 @@ class PinsHandler(restful.Controller):
         device = query.fetch(limit=5)
         logging.debug("PinsHandler#post#body" + self.request.body)
         if device:
-            if self.request.body == 'state=On':
-                setValueToPin(device[0], pins_name, pin_id_str, '1')
-            else:
-                setValueToPin(device[0], pins_name, pin_id_str, '0')
+            # parse cmd
+            # TO DO could be more generic
+            key_value_lst = self.request.body.split('=')
+            if key_value_lst[0] == 'state':
+                if key_value_lst[1] == 'On' :
+                    setValueToPin(device[0], pins_name, pin_id_str, '1')
+                else:
+                    setValueToPin(device[0], pins_name, pin_id_str, '0')
+            elif key_value_lst[0] == 'color':
+                setValueToPin(device[0], pins_name, pin_id_str, key_value_lst[1])
         
         restful.send_successful_response(self, '')
 
