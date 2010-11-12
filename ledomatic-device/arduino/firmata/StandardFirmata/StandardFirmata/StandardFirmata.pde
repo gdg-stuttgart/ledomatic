@@ -129,7 +129,7 @@ void setPinModeCallback(byte pin, int mode)
   case PWM:
     if (IS_PIN_PWM(pin)) {
       pinMode(PIN_TO_PWM(pin), OUTPUT);
-      analogWrite(PIN_TO_PWM(pin), 0);
+      analogWrite(PIN_TO_PWM(pin), 255);
       pinConfig[pin] = PWM;
     }
     break;

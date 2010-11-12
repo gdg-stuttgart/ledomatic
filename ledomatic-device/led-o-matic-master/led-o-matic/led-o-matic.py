@@ -20,7 +20,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from firmata import * 
 from ledomatic.server import Server
 
-serv = Server("http://localhost:8080")
+##serv = Server("http://localhost:8080")
+serv = Server()
 print "connected to " + str(serv.login('rr/L1'))
 
 
@@ -33,25 +34,29 @@ def setOut(a, out_nr, value):
     #a.delay(1)
     
 def setRGBOut(a, red, green, blue):
-    a.analog_write(3, red)
-    a.analog_write(6, green)
-    a.analog_write(7, blue)
+    a.analog_write(3, blue)
+    a.analog_write(5, green)
+    a.analog_write(6, red)
     #a.delay(1)    
     
 def get_rgb_from_hex(hex_color):
-    red = 255
-    gred = 0
-    blue = 0
+    print hex_color
+    value_color = int(hex_color, 16)
+    red = 255 - ((value_color >> 16) & 0xFF)
+    gred = 255 - ((value_color >> 8) & 0xFF)
+    blue = 255 - value_color & 0xFF
     return red, gred, blue
 
 # arduino on mac on the port with default 115200
 a = Arduino('/dev/tty.usbmodem411')
-setMode(a, 3, firmata.OUTPUT)
-setMode(a, 5, firmata.OUTPUT)
-setMode(a, 6, firmata.OUTPUT)
+setMode(a, 13, firmata.OUTPUT)
+setMode(a, 3, firmata.PWM)
+setMode(a, 5, firmata.PWM)
+setMode(a, 6, firmata.PWM)
 
 # infinite loop, Arduino instance should runs
 while True:
+  """a.parse()
   # check LED status
   answer = serv.getPinStatus('OUT','13')
   print answer
@@ -59,13 +64,16 @@ while True:
     setOut(a, 13, firmata.LOW)
   else:
   	setOut(a,13, firmata.HIGH)
-
+  """
   answer = serv.getPinStatus('RGB','0')
   print answer
-  if len(answer) == len('color=xxxxxx'):
-    # parse RGB from string
-    key_value_lst = '='.split(answer)
-    setRGBOut(a, get_rgb_from_hex(key_value_lst[0]))
+  if len(answer) == len('result=xxxxxx'):
+      #parse RGB from string
+      
+      key_value_lst = answer.split('=')
+      print key_value_lst 
+      r,g,b = get_rgb_from_hex(key_value_lst[1])
+      setRGBOut(a, r, g, b)
   # wait
   a.delay(1)
  
