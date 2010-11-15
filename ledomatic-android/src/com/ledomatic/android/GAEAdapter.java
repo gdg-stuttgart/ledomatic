@@ -93,7 +93,7 @@ public class GAEAdapter
 
 	public void setRGBValue(String device, String color)
 	{
-		postRequest(device, Channel.RGB, "0" , "color" + color);
+		postRequest(device, Channel.RGB, "0" , "color=" + color);
 	}
 
 	public void setToggleState(String device, boolean state)

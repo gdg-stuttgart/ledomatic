@@ -20,7 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 from firmata import * 
 from ledomatic.server import Server
 
-##serv = Server("http://localhost:8080")
+#serv = Server("http://localhost:8080")
 serv = Server()
 print "connected to " + str(serv.login('rr/L1'))
 
@@ -53,6 +53,7 @@ setMode(a, 13, firmata.OUTPUT)
 setMode(a, 3, firmata.PWM)
 setMode(a, 5, firmata.PWM)
 setMode(a, 6, firmata.PWM)
+last_r = last_g = last_b = 0;
 
 # infinite loop, Arduino instance should runs
 while True:

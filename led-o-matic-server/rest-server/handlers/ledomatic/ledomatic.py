@@ -181,7 +181,6 @@ def setValueToPin(device, pins_type_name, pin_id_str, value):
  
 class PinsHandler(restful.Controller):
     def get(self, device_name, pin_type_name, pin_id_str):
-        logging.debug("PinsHandler" + device_name + pin_type_name + pin_id_str)
         # we pretends L1 is conencted
         query = ledomatic.Device.all()
         query.filter('name =', device_name)
@@ -214,4 +213,23 @@ class PinsHandler(restful.Controller):
                 setValueToPin(device[0], pins_name, pin_id_str, key_value_lst[1])
         
         restful.send_successful_response(self, '')
+        
+        
 
+class RGBPinsHandler(restful.Controller):
+
+    def get(self, device_name, pin_id_str):
+        # we pretends L1 is conencted
+        query = ledomatic.Device.all()
+        query.filter('name =', device_name)
+        device = query.fetch(limit=5)
+        if device:
+           pins_value_str = device.pins_RGB
+           if  pins_value_str:   
+               values_lst = pins_value_str.split(',')
+               
+               restful.send_successful_response(self, 'result=',values_lst[0])
+           else:
+               restful.send_successful_response(self, 'result=FFFFFF')
+               
+    

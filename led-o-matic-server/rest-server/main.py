@@ -46,7 +46,8 @@ ROUTES = [
     ('/rr/*$', ledomatic.RootHandler),
     ('/rr/(\w+)/*$', ledomatic.DevicesHandler),
     ('/rr/(\w+)/(\w+)/*$', ledomatic.DeviceHandler),
-    ('/rr/(\w+)/(\w+)/(\w+)/*$', ledomatic.PinsHandler)]
+    ('/rr/(\w+)/(\w+)/(\w+)/*$', ledomatic.PinsHandler),
+    ('/rr/(\w+)/(\w+)/RGB/*$', ledomatic.RGBPinsHandler)]
 
 def main():
     application = webapp.WSGIApplication(ROUTES, debug=True)

@@ -31,11 +31,24 @@ public class Main extends Activity implements OnColorChangedListener {
 	}
 	
 	public void colorChanged( int color) {
+
+		final int red = Color.red(color);
+		final int green = Color.green(color);
+		final int blue = Color.blue(color);
+		final StringBuilder color_str = new StringBuilder("");
+		if ((red & 0xf0) == 0)
+			color_str.append("0");
+		color_str.append(Integer.toHexString(red));
+		if ((green & 0xf0) == 0)
+			color_str.append("0");
+		color_str.append(Integer.toHexString(green));			
+		if ((blue & 0xf0) == 0)
+			color_str.append("0");
+		color_str.append(Integer.toHexString(blue));
 		
-		final int c = color;
 		new Thread(new Runnable() {
 			public void run() {
-			 	GAEAdapter.getInstance().setRGBValue("L1", Integer.toHexString( Color.red( c))  + Integer.toHexString( Color.green( c))  + Integer.toHexString( Color.blue(c)));
+			 	GAEAdapter.getInstance().setRGBValue("L1", color_str.toString());
 				runOnUiThread(new Runnable() {
 					public void run() {
 						//status.setText("");
