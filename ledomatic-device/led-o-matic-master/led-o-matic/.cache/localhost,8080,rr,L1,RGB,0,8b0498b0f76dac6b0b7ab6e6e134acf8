@@ -4,7 +4,7 @@ content-location: http://localhost:8080/rr/L1/RGB/0
 expires: Fri, 01 Jan 1990 00:00:00 GMT
 server: Development/1.0
 cache-control: no-cache
-date: Mon, 15 Nov 2010 12:52:17 GMT
+date: Tue, 16 Nov 2010 09:03:51 GMT
 content-type: text/html; charset=utf-8
 
-result=FFaa00
+result=FFaaff

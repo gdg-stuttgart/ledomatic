@@ -37,6 +37,7 @@ from google.appengine.ext import db
 from google.appengine.ext.webapp import template
 from google.appengine.api import mail
 from google.appengine.api import urlfetch
+from google.appengine.api import memcache
 
 from handlers import restful
 from models import ledomatic
@@ -182,6 +183,8 @@ def setValueToPin(device, pins_type_name, pin_id_str, value):
 class PinsHandler(restful.Controller):
     def get(self, device_name, pin_type_name, pin_id_str):
         # we pretends L1 is conencted
+        logging.info("aAA Hallo from cache common")
+
         query = ledomatic.Device.all()
         query.filter('name =', device_name)
         device = query.fetch(limit=5)
@@ -210,6 +213,7 @@ class PinsHandler(restful.Controller):
                 else:
                     setValueToPin(device[0], pins_name, pin_id_str, '0')
             elif key_value_lst[0] == 'color':
+                memcache.delete("L1RGB0")
                 setValueToPin(device[0], pins_name, pin_id_str, key_value_lst[1])
         
         restful.send_successful_response(self, '')
@@ -232,4 +236,39 @@ class RGBPinsHandler(restful.Controller):
            else:
                restful.send_successful_response(self, 'result=FFFFFF')
                
+class RGB0PinsHandler(restful.Controller):
+
+    def get(self, device_name):
+        # we pretends L1 is conencted
+        data = memcache.get("L1RGB0")
+        if data is not None:
+            logging.info("aAA Hallo from cache")
+            restful.send_successful_response(self, 'result=' + data)
+        else:
+            query = ledomatic.Device.all()
+            query.filter('name =', device_name)
+            device = query.fetch(limit=5)
+            if device:
+                pins_value_str = device[0].pins_RGB
+            else:
+                pins_value_str = 'FFFFFF,0'
+           
+            values_lst = pins_value_str.split(',')
+            memcache.add("L1RGB0", values_lst[0], 3600)
+            restful.send_successful_response(self, 'result=' + values_lst[0])
     
+    def post(self, device_name):
+        logging.debug("PinsHandler#post" + device_name)
+        query = ledomatic.Device.all()
+        query.filter('name =', device_name)
+        device = query.fetch(limit=5)
+        logging.debug("PinsHandler#post#body" + self.request.body)
+        if device:
+            # parse cmd
+            # TO DO could be more generic
+            key_value_lst = self.request.body.split('=')
+            if key_value_lst[0] == 'color':
+                memcache.delete("L1RGB0")
+                setValueToPin(device[0], 'RGB', '0', key_value_lst[1])
+        
+        restful.send_successful_response(self, '')
