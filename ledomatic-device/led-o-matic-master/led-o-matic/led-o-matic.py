@@ -76,5 +76,5 @@ while True:
       r,g,b = get_rgb_from_hex(key_value_lst[1])
       setRGBOut(a, r, g, b)
   # wait
-  a.delay(1)
+#  a.delay(.2)
  
