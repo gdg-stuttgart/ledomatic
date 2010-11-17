@@ -21,8 +21,8 @@ from datetime import datetime
 from firmata import * 
 from ledomatic.server import Server
 
-serv = Server("http://localhost:8080")
-#serv = Server()
+#serv = Server("http://localhost:8080")
+serv = Server()
 print "connected to " + str(serv.login('rr/L1'))
 
 
