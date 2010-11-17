@@ -13,7 +13,6 @@ class Server:
     def getPinStatus(self, pins_name, pin_id):
         request = self.name + '/' + pins_name + '/' + pin_id
         response = self.conn.request_get(request)
-        print request
         return response['body']
   
 

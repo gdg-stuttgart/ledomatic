@@ -16,12 +16,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
+from datetime import datetime
 
 from firmata import * 
 from ledomatic.server import Server
 
-#serv = Server("http://localhost:8080")
-serv = Server()
+serv = Server("http://localhost:8080")
+#serv = Server()
 print "connected to " + str(serv.login('rr/L1'))
 
 
@@ -40,7 +41,6 @@ def setRGBOut(a, red, green, blue):
     #a.delay(1)    
     
 def get_rgb_from_hex(hex_color):
-    print hex_color
     value_color = int(hex_color, 16)
     red = 255 - ((value_color >> 16) & 0xFF)
     gred = 255 - ((value_color >> 8) & 0xFF)
@@ -67,14 +67,18 @@ while True:
   	setOut(a,13, firmata.HIGH)
   """
   answer = serv.getPinStatus('RGB','0')
-  print answer
   if len(answer) == len('result=xxxxxx'):
       #parse RGB from string
       
       key_value_lst = answer.split('=')
-      print key_value_lst 
       r,g,b = get_rgb_from_hex(key_value_lst[1])
-      setRGBOut(a, r, g, b)
+      if (r <> last_r)or(g <> last_g)or(b <> last_b):
+          print datetime.now()
+          print answer
+          setRGBOut(a, r, g, b)
+          last_r = r
+          last_g = g
+          last_b = b
   # wait
-#  a.delay(.2)
+  a.delay(1)
  

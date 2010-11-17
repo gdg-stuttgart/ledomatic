@@ -1,6 +1,6 @@
 # The MIT License
 # 
-# Copyright (c) 2008 William T. Katz
+# Copyright (c) 2010 Michal Harakal
 # 
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to 
@@ -32,11 +32,7 @@ import urllib
 import logging
 
 from google.appengine.ext import webapp
-from google.appengine.api import users
 from google.appengine.ext import db
-from google.appengine.ext.webapp import template
-from google.appengine.api import mail
-from google.appengine.api import urlfetch
 from google.appengine.api import memcache
 
 from handlers import restful
@@ -242,7 +238,6 @@ class RGB0PinsHandler(restful.Controller):
         # we pretends L1 is conencted
         data = memcache.get("L1RGB0")
         if data is not None:
-            logging.info("aAA Hallo from cache")
             restful.send_successful_response(self, 'result=' + data)
         else:
             query = ledomatic.Device.all()
@@ -254,7 +249,7 @@ class RGB0PinsHandler(restful.Controller):
                 pins_value_str = 'FFFFFF,0'
            
             values_lst = pins_value_str.split(',')
-            memcache.add("L1RGB0", values_lst[0], 3600)
+            memcache.add("L1RGB0", values_lst[0], 30)
             restful.send_successful_response(self, 'result=' + values_lst[0])
     
     def post(self, device_name):
