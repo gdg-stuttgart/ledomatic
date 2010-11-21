@@ -1,0 +1,12 @@
+main
+  idea, history(#gddde), links to git , citation Andy Rooney, "computers make it easier"
+  hw
+    arduino - firmata
+    ledomatic - 
+    
+  sw
+    arduino
+  about
+    
+  
+
