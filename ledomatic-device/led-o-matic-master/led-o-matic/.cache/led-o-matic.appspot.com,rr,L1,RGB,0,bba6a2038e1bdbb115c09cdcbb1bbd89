@@ -3,7 +3,7 @@ content-location: http://led-o-matic.appspot.com/rr/L1/RGB/0
 expires: Fri, 01 Jan 1990 00:00:00 GMT
 server: Google Frontend
 cache-control: no-cache
-date: Wed, 17 Nov 2010 13:54:33 GMT
+date: Wed, 17 Nov 2010 18:43:36 GMT
 content-type: text/html; charset=utf-8
 
-result=d65e27
+result=ff3e00

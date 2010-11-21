@@ -1,92 +1,308 @@
-/* andreas07 - an open source xhtml/css website layout by Andreas Viklund - http://andreasviklund.com . Free to use for any purpose as long as the proper credits are given for the original design work.
+/* andreas09 v1.0 (Dec 10th 2005) - An open source template by Andreas Viklund - http://andreasviklund.com. Free to use for any purpose as long as the proper credits are given to the original author. */
 
-Version: 1.1, November 28, 2005 */
+body {
+background:#8b8b8b;
+color:#303030;
+font:76% Verdana,Tahoma,Arial,sans-serif;
+margin:0;
+padding:0;
+text-align:center;
+}
 
-/**************** Page and tag styles ****************/
+a {
+color:#505050;
+font-weight:bold;
+text-decoration:none;
+}
 
-body
-{margin:0; padding:0; color:#303030; background:#fafafa url(images/bodybg.gif) top left repeat-y; font:76% Verdana,Tahoma,sans-serif;}
+a:hover {
+color:#808080;
+text-decoration:underline;
+}
 
-ul
-{list-style:circle; margin:15px 0 20px 0; font-size:0.9em;}
+p {
+line-height:1.5em;
+margin:0 0 15px;
+}
 
-li
-{margin:0 0 8px 25px;}
+/*** Main container ***/
 
-a
-{color:#d85d5d; font-weight:bold; text-decoration:none;}
+#container {
+background:#f0f0f0 url(images/bodybg.jpg) repeat-x;
+color:#303030;
+margin:0;
+min-width:770px;
+padding:0;
+text-align:left;
+width:100%;
+}
 
-a:hover
-{color:#505050; text-decoration:underline;}
+/*** Header section ***/
 
-img
-{float:left; margin:0 15px 15px 0; padding:1px; background:#ffffff; border:1px solid #d0d0d0;}
+#sitename {
+color:#ffffff;
+height:92px;
+margin:0 20px 10px;
+text-align:left;
+}
 
-a img
-{border-color:#d85d5d;}
+#sitename h1,#sitename h2 {
+font-weight:400;
+letter-spacing:-2px;
+margin:0;
+padding:0;
+}
 
-a img:hover
-{background:#d85d5d; border-color:#d85d5d;}
+#sitename h1 {
+font-size:2.4em;
+padding-top:20px;
+}
 
-/**************** Sidebar area styles ****************/
+#sitename h2 {
+font-size:1.6em;
+}
 
-#sidebar
-{position:absolute; top:0; left:0; width:220px; height:100%; overflow:auto; background:#e0e0e0 url(images/sidebarbg.gif) top right repeat-y; text-align:right;}
+/*** Horizontal menu ***/
 
-body > #sidebar
-{position:fixed;}
+#mainmenu {
+float:left;
+margin-bottom:25px;
+}
 
-#sidebar h1
-{margin:20px 18px 0 5px; color:#d85d5d; font-size:1.6em; letter-spacing:-2px; text-align:right;}
+#mainmenu ul {
+font-size:16px;
+margin:0;
+padding:0;
+}
 
-#sidebar h2, #sidebar h3
-{margin:0 20px 18px 5px; color:#808080; font-size:1.1em; font-weight:bold; letter-spacing:-1px; text-align:right;}
+#mainmenu li {
+float:left;
+height:35px;
+list-style:none;
+margin:0;
+padding:0;
+}
 
-#sidebar h3
-{margin:20px 18px 4px 5px; color:#606060;}
+#mainmenu a, #mainmenu span {
+border-right:1px solid #b0b0b0;
+color:#606060;
+display:block;
+font-size:0.7em;
+padding:11px 10px 10px;
+text-transform:uppercase;
+}
 
-#sidebar  p
-{margin:0 20px 18px 5px; color:#606060; font-size:0.8em;}
+#mainmenu a:hover {
+background:#f0f0f0 url(images/menuhover.jpg) top left repeat-x;
+color:#505050;
+text-decoration:none;
+}
 
-#sidebar a
-{color:#808080}
+#mainmenu .webgen-menu-item-selected a, #mainmenu .webgen-menu-item-selected span {
+background:#f0f0f0 url(images/menuhover.jpg) top left repeat-x;
+color:#505050;
+text-decoration:none;
+}
 
-#sidebar ul
-{margin-right: 20px; margin-left: 5px; list-style-type: none;}
+/*** Content wrap ***/
 
-#sidebar li
-{margin: 0px; padding-left: 5px;}
+#wrap {
+clear:both;
+font-size:0.9em;
+padding:0;
+}
 
-/**************** Navigation menu styles ****************/
+/*** Sidebars ***/
 
-#menu ul
-{list-style-type: none; margin: 0px; padding: 0px; font-size: 1.0em;}
+#leftside,#rightside {
+margin:0;
+padding:0 10px 10px;
+width:165px;
+}
 
-#menu li
-{margin: 0px; padding: 0px}
+#leftside {
+float:left;
+margin-right:10px;
+}
 
-#menu a,  #menu span
-{display:block; width:202px; padding:5px 18px 5px 0; color:#606060; background:#e0e0e0 url(images/sidebarbg.gif) top right repeat-y; font-size:1.8em; font-weight:normal; text-decoration:none; letter-spacing:-2px;}
+#rightside {
+float:right;
+margin-left:10px;
+}
 
-#menu a:hover, #menu span:hover
-{color:#303030; background:#f0f0f0 url(images/sidebarbg.gif) top right repeat-y;}
+#leftside h1,#rightside h1 {
+color:#505050;
+font-size:1.6em;
+font-weight:bold;
+letter-spacing:-1px;
+margin:0 0 12px;
+}
 
-#menu li.webgen-menu-item-selected a, #menu li.webgen-menu-item-selected span, #menu li.webgen-menu-submenu-inhierarchy span, #menu li.webgen-menu-submenu-inhierarchy a
-{padding:5px 18px 5px 0; background:#fafafa; border-top:2px solid #c0c0c0; border-bottom:2px solid #c0c0c0;}
+#leftside h2,#rightside h2 {
+font-size:1.1em;
+margin:0 0 20px;
+}
 
-#menu li.webgen-menu-item-selected a:hover, #menu li.webgen-menu-item-selected span:hover, #menu li.webgen-menu-submenu-inhierarchy span:hover, #menu li.webgen-menu-submenu-inhierarchy a:hover
-{color:#505050; background:#fafafa;}
+#leftside p,#rightside p {
+font-size:0.9em;
+line-height:1.4em;
+margin:0 0 16px 10px;
+}
 
-/**************** Content area styles ****************/
+.linklist {
+list-style:none;
+margin:0 0 16px 10px;
+padding:0;
+}
 
-#content
-{width:520px; margin:0 0 0 240px; padding:20px 0; background:#fafafa;}
+.linklist li {margin-bottom:0.7em;}
 
-#content p
-{margin:0 0 20px 0; line-height:1.5em;}
+/*** Sidebar menu ***/
 
-#content h1
-{margin:0; color:#808080; font-weight:normal; font-size:2.5em; letter-spacing:-2px; text-align:center;}
+#pagemenu ul {
+  margin: 0 0 16px 10px;
+  padding: 0px;
+  list-style: none;
+}
 
-#content h2
-{clear:both; margin:30px 0 10px 0; color:#d85d5d; font-weight:normal; font-size: 2em; letter-spacing:-2px;}
+.nav, #pagemenu a {
+background:#e8e9ea;
+border:1px solid #b0b0b0;
+color:#606060;
+display:block;
+margin-top:8px;
+padding:5px 4px 4px 10px;
+position:relative;
+text-transform:uppercase;
+width:140px;
+}
+
+.nav:hover, #pagemenu a:hover, #pagemenu li.webgen-menu-item-selected a, #pagemenu li.webgen-menu-submenu-inhierarchy a, .active {
+background:#f8f9fa;
+border:1px solid #909090;
+color:#303030;
+text-decoration:none;
+}
+
+.sub {
+font-size:0.8em;
+letter-spacing:1px;
+margin:3px 0 2px 10px;
+padding:4px 2px 2px 8px;
+width:125px;
+}
+
+/*** Content ***/
+
+#navbar {
+  height: 15px;
+  margin-bottom: 5px;
+  padding: 2px;
+}
+
+.rightbox {
+  float: right;
+  padding-left: 10px;
+}
+
+.leftbox {
+  float: left;
+  padding-right: 10px;
+}
+
+#content,#contentalt {
+background-color:#fafcff;
+border:1px solid #909090;
+color:#2a2a2a;
+padding:15px 20px 5px;
+}
+
+#content {margin:0 200px;}
+#contentalt {margin:0 200px 0 20px;}
+
+#content h1,#content h2,#contentalt h1,#contentalt h2 {
+background-color:inherit;
+color:#606060;
+font-size:1.8em;
+font-weight:bold;
+letter-spacing:-1px;
+margin:0 0 15px;
+padding:0;
+}
+
+#content h2,#contentalt h2 {
+font-size:1.6em;
+margin-bottom:10px;
+}
+
+#content img,#contentalt img {
+border:1px solid #b0b0b0;
+float:left;
+margin:5px 15px 6px;
+padding:5px;
+}
+
+/*** Footer ***/
+
+#footer {
+background:#8b8b8b url(images/footerbg.jpg) top left repeat-x;
+clear:both;
+color:#d0d0d0;
+font-size:0.9em;
+font-weight:bold;
+margin:0;
+padding:20px 0;
+text-align:center;
+width:100%;
+}
+
+#footer a {
+color:#d0d0d0;
+font-weight:bold;
+}
+
+/*** Various classes ***/
+
+.thumbnail {
+background:#fafbfc;
+border:1px solid #b0b0b0;
+margin:0 0 10px 10px;
+padding:5px;
+}
+
+.searchform {margin:0;}
+
+.searchbox {
+background:#f0f0f0;
+border:1px solid #b0b0b0;
+margin:0 4px 0 0;
+width:100px;
+}
+
+.searchbutton {
+background:#f0f0f0;
+border:1px solid #b0b0b0;
+}
+
+.clearingdiv {
+clear:both;
+height:30px;
+width:1px;
+}
+
+.hide {display:none;}
+
+/*** Text format ***/
+
+.intro {
+font-size:1.1em;
+font-weight:bold;
+letter-spacing:-1px;
+}
+
+.small {font-size:0.8em;}
+.large {font-size:1.4em;}
+.center {text-align:center;}
+.right {text-align:right;}
+
+/*** End of file ***/

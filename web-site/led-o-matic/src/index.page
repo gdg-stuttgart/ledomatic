@@ -1,15 +1,17 @@
 ---
-title: Empty Index Page
+title: led-o-matic
 in_menu: true
-routed_title: New webgen Website
+routed_title: led-o-matic
 ---
-## Welcome to *webgen*!
+## Welcome to *led-o-matic*!
 
-This is just a place holder for the start page for your new website!
+led-o-matic is over internet controled devices for controling o fRGB leds stripes.
 
-You can start by adjusting the meta information for this page file and adding some real content and
-then adding some more page files!
+led-o-matic is open source and open hardware project using folowing technologies:
+  * arduino
+  * android
+  * google app engine
+  * web RESTfull services   
 
-For more information about webgen have a look at the [documentation]!
+The initial work with the the systme almost completely working was written by geeks (names) on google developer days boot camp in Munich, Germany in November.
 
-[documentation]: http://webgen.rubyforge.org/documentation/index.html
