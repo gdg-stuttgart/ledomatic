@@ -3,15 +3,16 @@ title: led-o-matic
 in_menu: true
 routed_title: led-o-matic
 ---
-## Welcome to *led-o-matic*!
+## Welcome!
 
-led-o-matic is over internet controled devices for controling o fRGB leds stripes.
+led-o-matic is from android mobile phone over internet controled arduino based device for controling of RGB leds stripes.
 
 led-o-matic is open source and open hardware project using folowing technologies:
-  * arduino
-  * android
-  * google app engine
-  * web RESTfull services   
+
+* arduino
+* android
+* google app engine
+* web RESTfull services   
 
 The initial work with the the systme almost completely working was written by geeks (names) on google developer days boot camp in Munich, Germany in November.
 

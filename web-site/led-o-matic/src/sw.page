@@ -1,0 +1,25 @@
+---
+title: Software
+in_menu: true
+sort_info: 25
+---
+## Software
+
+## led-o-matic device
+
+### arduino firmware
+
+on arduino runs AnalogFirmata firmware without any modifications. The software is distributed with samples with Arduino IDE software.
+
+### Seagate dockstar
+
+Next piec of software runs on Dockstar from Seagate with debian as OS running on it. It simple python script
+sending html requests to server for getting a desired color a sending new analog walues for R,G,B channels
+to arduino with firmata protocol.
+
+## server
+server stores required color from remote device and gets it back to the led-o-matic device on request.
+The server is implemented on http protocol with RESTfull architecture, so color changes are posible 
+with simple http requestests as folows:
+
+    curl -X POST -i -d "color=ff0000" http://led-o-matic.server.com/rr/L1/RGB/0

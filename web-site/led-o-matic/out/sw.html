@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{lang:}">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="description" content="Your description goes here." />
     <meta name="keywords" content="your,keywords,goes,here" />
     <meta name="author" content="Your Name / Original design by Andreas Viklund - http://andreasviklund.com" />
     <meta name="generator" content="webgen - http://webgen.rubyforge.org" />
-    <link rel="stylesheet" href="{relocatable: default.css}" type="text/css" media="screen" />
-    <title>{title:}</title>
+    <link rel="stylesheet" href="default.css" type="text/css" media="screen" />
+    <title>Software</title>
   </head>
 
   <body>
@@ -20,14 +20,14 @@
       </div>
 
       <div id="mainmenu">
-        {menu: {max_levels: 1, used_nodes: files}}
+        <ul><li class="webgen-menu-level1 webgen-menu-item-selected"><span>Software</span></li><li class="webgen-menu-level1"><a href="index.html">led-o-matic</a></li></ul>
       </div>
 
       <div id="wrap">
 
         <div id="leftside">
           <h1>Menu</h1>
-          <div id="pagemenu">{menu: {used_nodes: fragments}}</div>
+          <div id="pagemenu"><ul><li class="webgen-menu-level1"><a href="#software">Software</a></li><li class="webgen-menu-level1 webgen-menu-submenu"><a href="#led-o-matic-device">led-o-matic device</a></li><li class="webgen-menu-level1"><a href="#server">server</a></li></ul></div>
 
 	  <h1>Open</h1>
 	  <p>led-o-matic joins current powerfull technolgies with the idea of openes. The Software is free (free as a beer and as the speech). Almost Hardware is also open.</p>
@@ -51,13 +51,34 @@
         </div>
 
         <div id="navbar" class="content">
-          <span class="leftbox">Location: {breadcrumb_trail: }</span>
-          <span class="rightbox">Language: {langbar: }</span>
+          <span class="leftbox">Location: <a href="index.html">led-o-matic</a> / <span>Software</span></span>
+          <span class="rightbox">Language: <span class="webgen-langbar-current-lang">en</span></span>
           <div class="clearingdiv">&nbsp;</div>
         </div>
 
         <div id="content">
-          <webgen:block name="content" />
+          <h2 id="software">Software</h2>
+
+<h2 id="led-o-matic-device">led-o-matic device</h2>
+
+<h3 id="arduino-firmware">arduino firmware</h3>
+
+<p>on arduino runs AnalogFirmata firmware without any modifications. The software is distributed with samples with Arduino IDE software.</p>
+
+<h3 id="seagate-dockstar">Seagate dockstar</h3>
+
+<p>Next piec of software runs on Dockstar from Seagate with debian as OS running on it. It simple python script
+sending html requests to server for getting a desired color a sending new analog walues for R,G,B channels
+to arduino with firmata protocol.</p>
+
+<h2 id="server">server</h2>
+<p>server stores required color from remote device and gets it back to the led-o-matic device on request.
+The server is implemented on http protocol with RESTfull architecture, so color changes are posible 
+with simple http requestests as folows:</p>
+
+<pre><code>curl -X POST -i -d &quot;color=ff0000&quot; http://led-o-matic.server.com/rr/L1/RGB/0
+</code></pre>
+
         </div>
         <div class="clearingdiv">&nbsp;</div>
 
