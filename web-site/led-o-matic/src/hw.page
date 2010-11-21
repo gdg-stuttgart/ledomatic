@@ -1,0 +1,28 @@
+---
+title: Hardware
+in_menu: true
+sort_info: 25
+---
+## Hardware
+
+### arduino 
+
+arduino is great way to prototype simple devices. It has following advantages:
+
+  * open harware and open source software
+  * the heart is atmega chip from Atmel
+  * expandable with shields
+  * great community (lots of samples, great forums, very good homepage)
+  * amazing how easy&quick is to get to blink a led for the first time 
+
+### Seagate dockstar
+
+Seagate dockstar ist network area storage (NAS), disk storage running and accesible on the LAN. 
+Running modern ARM CPU from Marwell on 1.2GHz with 1Gbit Ethernet interface able to runs proper linux 
+distribution. The hardware is very similar to sheevaplug, but much cheaper. In th esummer 2010 you can buy it
+fro 20€. Even now, after seagate stoped a production of the device, you can get it for 50€. It is just 
+"no brainer" for the money for hacking.
+
+The leds are connected to digital outputs on the arduino, so to control an intesity of LED and fro mixing of
+color we are using pulse wide modulation. Arduino makes it by hardware. we need just to used some transistros to 
+switch 12V and drive enought current for the leds stripe (you need to switch 36W on the 5 meter of the stripe).
