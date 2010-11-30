@@ -6,7 +6,15 @@ main
     
   sw
     arduino
+    seagete dockstar
+    native android client
+    server, java, python
+    
+    
   about
     
   
+  webgen.rb
+    - update ruby gems on mac http://docs.rubygems.org/read/chapter/3
+     - installing webgen.rb  http://webgen.rubyforge.org/installation.html
 
