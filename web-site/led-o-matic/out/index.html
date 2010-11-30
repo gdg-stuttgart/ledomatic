@@ -3,12 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="Your description goes here." />
-    <meta name="keywords" content="your,keywords,goes,here" />
-    <meta name="author" content="Your Name / Original design by Andreas Viklund - http://andreasviklund.com" />
+    <meta name="description" content="RGB led stripe controler" />
+    <meta name="keywords" content="arduino, android, open software, led, rgb, led stripe" />
+    <meta name="author" content="Michal Harakal / Original design by Andreas Viklund - http://andreasviklund.com" />
     <meta name="generator" content="webgen - http://webgen.rubyforge.org" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.lightbox-0.5.js"></script>
     <link rel="stylesheet" href="default.css" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
+    
     <title>led-o-matic</title>
+    <script type="text/javascript">
+    $(function() {
+	// This, or...
+	$('#gallery a').lightBox(); // Select all links in object with gallery ID
+});
+</script>
   </head>
 
   <body>
@@ -61,8 +71,6 @@
         <div id="content">
           <h2 id="welcome">Welcome!</h2>
 
-<p><img alt="Super image" src="img/ledomatic_tn.jpg" /></p>
-
 <p>led-o-matic is arduino based device for controling of RGB LED stripe from android mobile phone over internet.</p>
 
 <p>led-o-matic is open source and open hardware project using folowing technologies:</p>
@@ -73,6 +81,13 @@
   <li>python</li>
   <li>RESTfull web services   </li>
 </ul>
+
+<div id="gallery">
+<a href="img/DSC_4591_.jpg"><img alt="" height="72" src="img/DSC_4591_tn.jpg" width="72" /></a>
+<a href="img/DSC_4585_.jpg"><img alt="" height="72" src="img/DSC_4585_tn.jpg" width="72" /></a>
+</div>
+<div>
+</div>
 
 <p>The initial work with the the systme almost completely working was written by geeks <a href="team.html">team</a> 
 on Google developer days boot camp in Munich, Germany in November 2010.</p>
