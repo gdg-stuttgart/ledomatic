@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="default.css" type="text/css" media="screen" />
     <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="screen" />
     
-    <title>Software</title>
+    <title>Native client for android</title>
     <script type="text/javascript">
     $(function() {
 	// This, or...
@@ -30,14 +30,14 @@
       </div>
 
       <div id="mainmenu">
-        <ul><li class="webgen-menu-level1 webgen-menu-item-selected"><span>Software</span></li><li class="webgen-menu-level1"><a href="hw.html">Hardware</a></li><li class="webgen-menu-level1"><a href="index.html">led-o-matic</a></li></ul>
+        <ul><li class="webgen-menu-level1"><a href="sw.html">Software</a></li><li class="webgen-menu-level1"><a href="hw.html">Hardware</a></li><li class="webgen-menu-level1"><a href="index.html">led-o-matic</a></li></ul>
       </div>
 
       <div id="wrap">
 
         <div id="leftside">
           <h1>Menu</h1>
-          <div id="pagemenu"><ul><li class="webgen-menu-level1"><a href="#software">Software</a></li><li class="webgen-menu-level1 webgen-menu-submenu"><a href="#led-o-matic-device">led-o-matic device</a></li><li class="webgen-menu-level1"><a href="#server">server</a></li><li class="webgen-menu-level1"><a href="#remote-clients">Remote clients</a></li><li class="webgen-menu-level1"><a href="#native-remote-client-for-android">native remote client for android</a></li></ul></div>
+          <div id="pagemenu"><ul><li class="webgen-menu-level1"><a href="#android-client">Android client</a></li><li class="webgen-menu-level1 webgen-menu-submenu"><a href="#screen">Screen</a></li></ul></div>
 
 	  <h1>Open</h1>
 	  <p>led-o-matic joins current powerfull technolgies with the idea of openes. The Software is free (free as a beer and as the speech). Almost Hardware is also open.</p>
@@ -63,49 +63,46 @@
         </div>
 
         <div id="navbar" class="content">
-          <span class="leftbox">Location: <a href="index.html">led-o-matic</a> / <span>Software</span></span>
+          <span class="leftbox">Location: <a href="index.html">led-o-matic</a> / <span>Native client for android</span></span>
           <span class="rightbox">Language: <span class="webgen-langbar-current-lang">en</span></span>
           <div class="clearingdiv">&nbsp;</div>
         </div>
 
         <div id="content">
-          <h2 id="software">Software</h2>
+          <h2 id="android-client">Android client</h2>
 
-<h2 id="led-o-matic-device">led-o-matic device</h2>
+<p>The sense of a new project for andorid remote client was given by need:</p>
 
-<h3 id="arduino-firmware">arduino firmware</h3>
+<ul>
+  <li>learn programing for android</li>
+  <li>building a software running on variety of androids, inpedent on resolution and hardware</li>
+  <li>discovering of advantages for writing native android code</li>
+</ul>
 
-<p>on arduino runs AnalogFirmata firmware without any modifications. The software is distributed with samples with Arduino IDE software.</p>
+<h2 id="screen">Screen</h2>
+<p>The basic screen for remote consists from:</p>
 
-<h3 id="seagate-dockstar">Seagate dockstar</h3>
+<ul>
+  <li>ColorWheel - view wich enables selct color from whole RGB color spectrum</li>
+  <li>ButtonsPad - predefined colors as Buttons <a href="http://wikipedia.org">Web colors</a></li>
+  <li>IntensitySlider - defines intisty of color</li>
+</ul>
 
-<p>Next piece of software should run on Dockstar from Seagate with openwrt as OS running on it. 
-A simple python script sends html requests to server for getting a desired color a sending new analog 
-values for R,G,B channels to arduino over USB with firmata protocol. But the first Seagate device didn&rsquo;t
-stand my apemts to get OpneWrt running and 4 day before Christmas justs failed. So it was time for the plan B
-and old gut NSLU2 from basement did it. </p>
+<h3 id="layouts">Layouts</h3>
 
-<h2 id="server">server</h2>
-<p>server stores required color from remote device and gets it back to the led-o-matic device on request.
-The server is implemented on http protocol with RESTfull architecture, so color changes are posible 
-with simple http requestests as folows:</p>
+<p>Androd offers with separated layouts in XML files great posibility to write software running seamlessly 
+on variety of devices. Testing with:</p>
 
-<pre><code>curl -X POST -i -d &quot;color=ff0000&quot; http://led-o-matic.server.com/rr/L1/RGB/0
-</code></pre>
+<ul>
+  <li>T-Mobile G1 running the stock 1.6 firmware</li>
+  <li>HTC Desire</li>
+</ul>
 
-<h2 id="remote-clients">Remote clients</h2>
-<p>The first remote client was written as native code for android. But the use of simple web 
-technolgies and protocol asks for writen of a cool html5 remote. Even google on the 
-google devloper days 2010 didn&rsquo;t get the ultimative answer to th equestion native or html, so we have
-written both.</p>
+<p>Every View has its own separate file and different layouts have been created by utilizing of 
+include and merge tags as described <a href="http://android-developers.blogspot.com/2009/02/android-layout-tricks-2-reusing-layouts.html">Android Layout Tricks #2: Reusing layouts</a>.</p>
 
-<h2 id="native-remote-client-for-android">native remote client for android</h2>
-<p>This client was written already on the beging by Michael Vogt and Michael Ludwig. 
-I made only minor changes before Christmas 2010.</p>
-
-<p>The project waken up my interests to write for android, so i january I decided to write a new 
-<a href="sw_android.html">client from scratch</a>  and finally got serious reson for a new Nexus One ;-)</p>
-
+<h4 id="screen-orientation">Screen orientation</h4>
+<p>The landscape and portraitt have a different layouts. </p>
 
         </div>
         <div class="clearingdiv">&nbsp;</div>
