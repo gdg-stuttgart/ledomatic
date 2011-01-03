@@ -8,17 +8,21 @@ handlers:
   static_files: assets/index.html
   upload: assets/index.html
   
-- url: /a
-  static_dir: assets
+-  url: /a
+   static_dir: assets
   
 
 - url: /favicon\.ico
-  static_files: static/favicon.ico
-  upload: static/favicon.ico
+  static_files: assets/favicon.ico
+  upload: assets/favicon.ico
+
+- url: /apple-touch-icon\.png
+  static_files: assets/apple-touch-icon.png
+  upload: assets/apple-touch-icon.png
 
 - url: /robots\.txt
-  static_files: static/robots.txt
-  upload: static/robots.txt
+  static_files: assets/robots.txt
+  upload: assets/robots.txt
 
 - url: /admin/shell.*
   script: handlers/shell/shell.py
