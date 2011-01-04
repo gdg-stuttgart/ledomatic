@@ -6,6 +6,8 @@ routed_title: led-o-matic
 ## Welcome!
 
 
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/Tcm1D0Svzsk?fs=1&amp;hl=de_DE"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/Tcm1D0Svzsk?fs=1&amp;hl=de_DE" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="385"></embed></object>
+
 
 led-o-matic is arduino based device for controling of RGB LED stripe from android mobile phone over internet.
 
@@ -16,12 +18,7 @@ led-o-matic is open source and open hardware project using folowing technologies
 * python
 * RESTfull web services   
 
-<div id="gallery">
-<a href="img/DSC_4591_.jpg"><img src="img/DSC_4591_tn.jpg" width="72" height="72" alt="" /></a>
-<a href="img/DSC_4585_.jpg"><img src="img/DSC_4585_tn.jpg" width="72" height="72" alt="" /></a>
-</div>
-<div>
-</div>
+
 
 The initial work with the the systme almost completely working was written by geeks [team](team.html) 
 on Google developer days boot camp in Munich, Germany in November 2010.
