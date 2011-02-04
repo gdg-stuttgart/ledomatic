@@ -1,0 +1,1 @@
+ledomatic is magic device, controled with android client over Internet
