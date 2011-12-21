@@ -1,21 +1,14 @@
 /*
-  DNS and DHCP-based Web client
- 
- This sketch connects to a website (http://www.google.com)
- using an Arduino Wiznet Ethernet shield. 
- 
- Circuit:
- * Ethernet shield attached to pins 10, 11, 12, 13
- 
- created 18 Dec 2009
- by David A. Mellis
- modified 12 April 2011
- by Tom Igoe, based on work by Adrian McEwen
- 
+ * ledomatic version 2012, based on original ledomatic and
+ * DNS and DHCP-based Web client Tom Igoe (from Arduino samples)
  */
+ 
 
 #include <SPI.h>
 #include <Ethernet.h>
+#include "ledoserver.h"
+
+LedoServer s(1);
 
 // Enter a MAC address for your controller below.
 // Newer Ethernet shields have a MAC address printed on a sticker on the shield
@@ -56,6 +49,7 @@ void setup() {
 
 void loop()
 {
+  /*
   // if there are incoming bytes available 
   // from the server, read them and print them:
   if (client.available()) {
@@ -72,5 +66,6 @@ void loop()
     // do nothing forevermore:
     while(true);
   }
+  */
 }
 
